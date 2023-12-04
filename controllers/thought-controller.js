@@ -1,7 +1,7 @@
 const { Thought, User } = require("../models");
 
 const thoughtController = {
-  // get all Thoughts
+  // get all thoughts
   getAllThought(req, res) {
     Thought.find({})
       .populate({
@@ -17,7 +17,7 @@ const thoughtController = {
       });
   },
 
-  // get one Thought by id
+  // get one thought by id
   getThoughtById({ params }, res) {
     Thought.findOne({ _id: params.id })
       .populate({
@@ -37,7 +37,7 @@ const thoughtController = {
       });
   },
 
-  // create Thought
+  // create thought
   // push the created thought's _id to the associated user's thoughts array field
   createThought({ params, body }, res) {
     Thought.create(body)
@@ -60,7 +60,7 @@ const thoughtController = {
       .catch((err) => res.json(err));
   },
 
-  // update Thought by id
+  // update thought by id
   updateThought({ params, body }, res) {
     Thought.findOneAndUpdate({ _id: params.id }, body, {
       new: true,
@@ -76,7 +76,7 @@ const thoughtController = {
       .catch((err) => res.json(err));
   },
 
-  // delete Thought
+  // delete thought
   deleteThought({ params }, res) {
     Thought.findOneAndDelete({ _id: params.id })
       .then((dbThoughtData) => {
